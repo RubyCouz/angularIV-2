@@ -1,12 +1,7 @@
 var app = angular.module('testApp', []);
 
-app.controller('carsCtrl', function($scope) {
-    $scope.cars = [
-        {'brand': 'Renault',  'color': 'verte'},
-        {'brand': 'Citroen', 'color': 'grise'},
-        {'brand': 'Opel',  'color': 'or'},
-        {'brand': 'Ferrari', 'color': 'rouge'},
-        {'brand': 'Peugeot', 'color': 'bleu'},
-        {'brand': 'Nissan', 'color': 'verte'},
-    ];
+app.controller('carsCtrl', function($scope, $http) {
+    $http.get('voiture.json').then(fucntion(response) {
+      $scope.cars = response.data;
+    });
 });
